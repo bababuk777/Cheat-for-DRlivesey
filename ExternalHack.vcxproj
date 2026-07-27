@@ -88,6 +88,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -103,6 +105,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -118,6 +122,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -133,6 +139,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -143,11 +151,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Baseadress.cpp" />
-    <ClCompile Include="boss.cpp" />
+    <ClCompile Include="fastdoor.cpp" />
+    <ClCompile Include="kill_all.cpp" />
     <ClCompile Include="config.cpp" />
     <ClCompile Include="damage.cpp" />
-    <ClCompile Include="freewall.cpp" />
+    <ClCompile Include="GhostMod.cpp" />
     <ClCompile Include="globals.cpp" />
     <ClCompile Include="health.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
@@ -157,13 +165,14 @@
     <ClCompile Include="imgui\imgui_impl_win32.cpp" />
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
-    <ClCompile Include="invisiblienemy.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="math.h" />
     <ClCompile Include="memory_functions.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="music.cpp" />
+    <ClCompile Include="radar.cpp" />
+    <ClCompile Include="rapidfire.cpp" />
     <ClCompile Include="speed.cpp" />
-    <ClCompile Include="UpdateAdress.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h" />

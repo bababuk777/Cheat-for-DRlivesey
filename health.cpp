@@ -10,41 +10,45 @@ uintptr_t HealthAdress = 0;
 
 void Findhealthadress() {
 	std::vector<DWORD> offsets = { 0x40,0x20 };
-	HealthAdress = ReadOffsetValue<uintptr_t>(InventoryListAdress, offsets);
+	HealthAdress = ReadOffsetValue<uintptr_t>(A::InventoryListAdress, offsets);
 }
 
-void Basehealth() {
-	uintptr_t adress = HealthAdress + 0x18;
-	uintptr_t maxadress = HealthAdress + 0x1C;
-	if (config.Basehealth) {
-		WPM<int>(adress, 1000);
-		WPM<int>(maxadress, 1000);
+void InfinityHP() {
+
+	uintptr_t HPAddress = HealthAdress + 0x18;
+	uintptr_t MaxHPAddress = HealthAdress + 0x1C;
+	uintptr_t GoldHPAddress = HealthAdress + 0x68;
+	uintptr_t GoldHPMaxAddress = HealthAdress + 0x6C;
+
+	static bool lastState = false;
+	if (config.InfinityHP) {
+		WPM<int>(HPAddress, 1000);
+		WPM<int>(MaxHPAddress, 1000);
+		WPM<int>(GoldHPAddress, 1000);
+		WPM<int>(GoldHPMaxAddress, 1000);
 	}
-	else {
-		WPM<int>(adress, 20);
-		WPM<int>(maxadress, 20);
+	else if(lastState) {
+		WPM<int>(HPAddress, 20);
+		WPM<int>(MaxHPAddress, 20);
+		WPM<int>(GoldHPAddress, 0);
+		WPM<int>(GoldHPMaxAddress, 20);
 	}
+	lastState = config.InfinityHP;
 }
 
-void Goldhealth() {
-	uintptr_t adress = HealthAdress + 0x68;
-	uintptr_t maxadress = HealthAdress + 0x6C;
-	if (config.Goldhealth) {
-		WPM<int>(adress, 1000);
-		WPM<int>(maxadress, 1000);
-	}
-	else {
-		WPM<int>(adress, 0);
-		WPM<int>(maxadress, 0);
-	}
-}
+
 
 void Invisible() {
+
 	uintptr_t adress = HealthAdress + 0x64;
+
+	static bool lastState = false;
+
 	if (config.Invisible) {
 		WPM<byte>(adress, 1);
 	}
-	else {
+	else if(lastState) {
 		WPM<byte>(adress, 0);
 	}
+	lastState = config.Invisible;
 }

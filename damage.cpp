@@ -6,20 +6,22 @@
 #include "globals.h"
 #include "hacks.h"
 
-
-uintptr_t DamageAdress = 0;
-
-void Finddamageadress() {
-	std::vector<DWORD> offsets = { 0x48,0x40 };
-	DamageAdress = ReadOffsetValue<uintptr_t>(InventoryListAdress, offsets)+0x18;
-}
-
 void Damage() {
-	if (InventoryListAdress == 0 || RPM<uintptr_t>(InventoryListAdress) == 0) {
-		
-	}
+
+	static bool lastState = false;
+
 	if (config.Damage)
-		WPM<int>(DamageAdress, 1000);
-	else
-		WPM<int>(DamageAdress, 4);
+		for (int i = 0;i < 3;i++)
+		{
+			uintptr_t weapon = RPM<uintptr_t>(A::shootctr + 0x40 + i * 0x8);
+			WPM<int>(weapon + 0x1C, 1000);
+		}
+	else if (lastState)
+		for (int i = 0;i < 3;i++)
+		{
+			uintptr_t weapon = RPM<uintptr_t>(A::shootctr + 0x40 + i * 0x8);
+			WPM<int>(weapon + 0x18, 4);
+		}
+
+	lastState = config.Damage;
 }

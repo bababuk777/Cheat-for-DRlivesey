@@ -11,8 +11,8 @@
 #include "menu.h"
 #include "config.h"
 #include "memory_functions.h"
-#include "globals.h"
 #include "hacks.h"
+#include "globals.h"
 
 using namespace std;
 
@@ -43,7 +43,7 @@ INT APIENTRY WinMain(HINSTANCE instance, HINSTANCE, PSTR, INT cmd_show) {
 	RegisterClassExW(&wc);
 
 	const HWND window = CreateWindowExW(
-		WS_EX_TOPMOST | WS_EX_TRANSPARENT | WS_EX_LAYERED | WS_EX_NOACTIVATE,
+		WS_EX_TOPMOST | WS_EX_TRANSPARENT | WS_EX_LAYERED,
 		wc.lpszClassName,
 		L"External Overlay",
 		WS_POPUP,
@@ -132,49 +132,21 @@ INT APIENTRY WinMain(HINSTANCE instance, HINSTANCE, PSTR, INT cmd_show) {
 	FILE* consoleOut;
 	freopen_s(&consoleOut, "CONOUT$", "w", stdout);
 
-	std::cout << "Waiting for the game to start";
 
-	int dots = 0;
-	while (!AttachToProcess())
+	if (AttachToProcess() == false)
 	{
-		std::cout << "\rWaiting for the game to start";
-		for (int i = 0; i < dots; i++) std::cout << ".";
-		std::cout << "   " << std::flush;
-
-		dots = (dots + 1) % 4;
-		Sleep(1000);
+		return 0;
 	}
 
-	std::cout << "\r                                              \r";
-	std::cout << "Game found! Successfully attached." << std::flush;
-	Sleep(700);
+	FindBaseAddres();
+	FindInventoryList();
+	FindEntPositionlist();
+	FindCurRoom();
+	Findmusicadress();
+	Findhealthadress();
+	FindShootctrAddress();
 
-	std::cout << "\r                                              \r";
-	std::cout << "Searching for addresses";
-	dots = 0;
 
-	bool addressesFound = false;
-
-	while (!addressesFound)
-	{
-		std::cout << "\rSearching for addresses";
-		for (int i = 0; i < dots; i++) std::cout << ".";
-		std::cout << "   " << std::flush;
-
-		dots = (dots + 1) % 4;
-		Sleep(200);
-
-		FindinvisiblienemyAddress();
-		UpdateAdress();
-
-		if (InventoryListAdress != 0)
-		{
-			addressesFound = true;
-		}
-	}
-
-	std::cout << "\rCheat Ready!                              " << std::endl;
-	
 	while (!g_ExitApplication) {
 		MSG msg;
 		while (::PeekMessage(&msg, nullptr, 0U, 0U, PM_REMOVE)) {
@@ -188,25 +160,43 @@ INT APIENTRY WinMain(HINSTANCE instance, HINSTANCE, PSTR, INT cmd_show) {
 
 		HandleKeyboardInput(window);
 		RenderMenu();
-		static int frameCount = 0;
-		if (++frameCount >= 60)  
-		{
-			UpdateAdress();
-			frameCount = 0;
-		}
-		if (config.Freewall)     Freewall();
-		if (config.Basehealth)   Basehealth();
-		if (config.Goldhealth)   Goldhealth();
-		if (config.Invisible)    Invisible();
-		if (config.Damage)       Damage();
-		if (config.Music)        Music();
-		if (config.Boss)         Boss();
 
-		SetWindowPos(window, HWND_TOPMOST, 0, 0, 0, 0,
-			SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+		UpdateinStartRoom();
+
+		FindRotationAddress();
+		FindPlayerPosition();
+		UpdateEnemies();
+		FindCurRoom();
+
+		RapidFire();
+		Music();
+		InfinityHP();
+		Invisible();
+		GhostMod();
+		Damage();
+		if (config.AIM) AIM();
+		if (config.KillAll) Kill_All();
+		if (config.Radar) Radar();
+		if (config.FastDoor) FastDoor();
+	
+
+
+		if (config.Basehealth)
+			Basehealth();
+		if (config.Basehealth)
+			Basehealth();
+		if (config.Basehealth)
+			Basehealth();
+		if (config.Basehealth)
+			Basehealth();
+		if (config.Basehealth)
+			Basehealth();
+		if (config.Basehealth)
+			Basehealth();
+
 		ImDrawList* drawList = ImGui::GetBackgroundDrawList();
 
-		
+
 		ImGui::Render();
 		constexpr float color[4]{ 0.f, 0.f, 0.f, 0.f };
 		device_context->OMSetRenderTargets(1U, &render_target_view, nullptr);

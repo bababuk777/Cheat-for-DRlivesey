@@ -63,17 +63,11 @@
     <ClCompile Include="globals.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="invisiblienemy.cpp">
-      <Filter>hacks</Filter>
-    </ClCompile>
-    <ClCompile Include="freewall.cpp">
+    <ClCompile Include="GhostMod.cpp">
       <Filter>hacks</Filter>
     </ClCompile>
     <ClCompile Include="speed.cpp">
       <Filter>hacks</Filter>
-    </ClCompile>
-    <ClCompile Include="Baseadress.cpp">
-      <Filter>sdk</Filter>
     </ClCompile>
     <ClCompile Include="health.cpp">
       <Filter>hacks</Filter>
@@ -84,10 +78,19 @@
     <ClCompile Include="music.cpp">
       <Filter>hacks</Filter>
     </ClCompile>
-    <ClCompile Include="boss.cpp">
+    <ClCompile Include="kill_all.cpp">
       <Filter>hacks</Filter>
     </ClCompile>
-    <ClCompile Include="UpdateAdress.cpp">
+    <ClCompile Include="math.h">
+      <Filter>sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="fastdoor.cpp">
+      <Filter>hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="rapidfire.cpp">
+      <Filter>hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="radar.cpp">
       <Filter>hacks</Filter>
     </ClCompile>
   </ItemGroup>

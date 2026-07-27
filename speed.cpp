@@ -5,9 +5,10 @@
 #include <vector>
 #include "globals.h"
 
-void Speedhack() {
-	uintptr_t speedadress = RPM<uintptr_t>(InventoryListAdress + 0x50);
-	WPM<float>(speedadress + 0x64, config.Speedhack);
-	WPM<float>(speedadress + 0x5C, config.Speedhack);
-	
+void Speedhack()
+{
+    uintptr_t plrCtrl = RPM<uintptr_t>(A::InventoryListAdress + 0x50);
+
+    WPM<float>(plrCtrl + 0x5C, config.Speedhack);
+    WPM<float>(plrCtrl + 0x64, config.Speedhack);
 }

@@ -27,43 +27,42 @@ void HandleKeyboardInput(HWND window)
 }
 
 
+
 void RenderMenu() {
-	if (!isMenuClickable) 
+	if (!isMenuClickable)
 		return;
 	ImGui::Begin("Menu");
 	if (ImGui::BeginTabBar(""))
 	{
-		if (ImGui::BeginTabItem("Player")) 
+		if (ImGui::BeginTabItem("Player"))
 		{
-			if (ImGui::SliderFloat("Speedhack", &config.Speedhack, 1.0f, 100.0f, "%.1f"))
-				Speedhack();
-			if (ImGui::Checkbox("Basehealth", &config.Basehealth))
-				Basehealth();
-			if (ImGui::Checkbox("Goldhealth", &config.Goldhealth))
-				Goldhealth();
-			if (ImGui::Checkbox("Invisible", &config.Invisible))
-				Invisible();
+			if (ImGui::SliderFloat("Speedhack", &config.Speedhack, 1.0f, 100.0f, "%.1f")) Speedhack();
+			if (ImGui::Checkbox("Infiniti_HP", &config.InfinityHP));
+			if (ImGui::Checkbox("Invisible", &config.Invisible));
 			ImGui::EndTabItem();
 		}
-		if (ImGui::BeginTabItem("Weapon")) 
+		if (ImGui::BeginTabItem("Weapon"))
 		{
-			if (ImGui::Checkbox("1hit", &config.Damage))
-				Damage();
+			if (ImGui::Checkbox("AIM", &config.AIM));
+			if (ImGui::Checkbox("1hit", &config.Damage));
+			if (ImGui::Checkbox("RapidFire", &config.RapidFire));
+			ImGui::EndTabItem();
+		}
+		if (ImGui::BeginTabItem("ESP")) {
+
+			//if (ImGui::Checkbox("Line", &config.Freewall));
+			//if (ImGui::Checkbox("box", &config.Freewall));
+			if (ImGui::Checkbox("radar", &config.Radar));
 			ImGui::EndTabItem();
 		}
 		if (ImGui::BeginTabItem("Misk"))
 		{
-			if (ImGui::Checkbox("Invisiblienemy", &config.Invisiblienemy))
-				Invisiblienemy();
-			if (ImGui::Checkbox("Freewall", &config.Freewall))
-				Freewall();
-			if (ImGui::Checkbox("Phonkoff", &config.Music))
-				Music();
-			if (ImGui::Checkbox("Killboss", &config.Boss))
-			{
-				FindFBossadress();
-				Boss();
-			}
+			if (ImGui::Checkbox("GhostMod", &config.GhostMod));
+			if (ImGui::Checkbox("Phonk_Off", &config.Music));
+				
+			if (ImGui::Checkbox("Kill_All", &config.KillAll));
+			if (ImGui::Checkbox("FastDoor", &config.FastDoor));
+
 			ImGui::EndTabItem();
 		}
 		ImGui::EndTabBar();

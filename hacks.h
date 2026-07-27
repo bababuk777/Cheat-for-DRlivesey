@@ -1,26 +1,13 @@
 #pragma once
 
-void UpdateAdress();
-void FindInventoryList();
-
-void FindinvisiblienemyAddress();
-void Invisiblienemy();
-
-void Freewall();
-void FindFreewalladress();
-
 void Speedhack();
-
-void Findhealthadress();
-void Basehealth();
-void Goldhealth();
-void Invisible();
-
-void Finddamageadress();
-void Damage();
-
 void Music();
-void Findmusicadress();
-
-void FindFBossadress();
-void Boss();
+void InfinityHP();
+void Invisible();
+void GhostMod();
+void Damage();
+void Kill_All();
+void FastDoor();
+void RapidFire();
+void Radar();
+void AIM();

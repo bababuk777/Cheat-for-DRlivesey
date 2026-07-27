@@ -189,28 +189,18 @@ INT APIENTRY WinMain(HINSTANCE instance, HINSTANCE, PSTR, INT cmd_show) {
 		HandleKeyboardInput(window);
 		RenderMenu();
 		static int frameCount = 0;
-		if (++frameCount >= 60)          // примерно раз в секунду (при 60 FPS)
+		if (++frameCount >= 60)  
 		{
 			UpdateAdress();
-			Boss();
 			frameCount = 0;
 		}
-		if(config.Damage)
-			Damage();
-		if (config.Freewall)
-			Freewall();
-		if (config.Music)
-			Music();
-		if (config.Boss)
-			Boss();
-		if (config.Speedhack)
-			Speedhack();
-		if (config.Invisible)
-			Invisible();
-		if (config.Goldhealth)
-			Goldhealth();
-		if (config.Basehealth)
-			Basehealth();
+		if (config.Freewall)     Freewall();
+		if (config.Basehealth)   Basehealth();
+		if (config.Goldhealth)   Goldhealth();
+		if (config.Invisible)    Invisible();
+		if (config.Damage)       Damage();
+		if (config.Music)        Music();
+		if (config.Boss)         Boss();
 
 		SetWindowPos(window, HWND_TOPMOST, 0, 0, 0, 0,
 			SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);

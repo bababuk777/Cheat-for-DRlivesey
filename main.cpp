@@ -179,23 +179,7 @@ INT APIENTRY WinMain(HINSTANCE instance, HINSTANCE, PSTR, INT cmd_show) {
 		if (config.Radar) Radar();
 		if (config.FastDoor) FastDoor();
 	
-
-
-		if (config.Basehealth)
-			Basehealth();
-		if (config.Basehealth)
-			Basehealth();
-		if (config.Basehealth)
-			Basehealth();
-		if (config.Basehealth)
-			Basehealth();
-		if (config.Basehealth)
-			Basehealth();
-		if (config.Basehealth)
-			Basehealth();
-
 		ImDrawList* drawList = ImGui::GetBackgroundDrawList();
-
 
 		ImGui::Render();
 		constexpr float color[4]{ 0.f, 0.f, 0.f, 0.f };
